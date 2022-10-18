@@ -1,7 +1,7 @@
 FROM python:3.9
 
-ENV NOME /app
-WORKDIR $NOME
+ENV HOME /app
+WORKDIR $HOME
 
 COPY requirements.txt .
 RUN python3 -m pip install --no-cache -r requirements.txt

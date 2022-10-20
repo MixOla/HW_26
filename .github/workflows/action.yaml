@@ -4,11 +4,11 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      -name: checkout
+      - name: checkout
        uses: actions/checkout@v2
-      -name: build
+      - name: build
        run: docker build -t &{{ secrets.HOST }}:$GITHUB_REF_NAME-$GITHUB_RUN_ID .
-      -name: login
+      - name: login
        run: docker login -u ${{ secrets,DOCKER_USERNAME }} -p ${{ secrets.DOCKER_TOKEN }}
-      -name: push
+      - name: push
        run: docker push &{{ secrets.HOST }}:$GITHUB_REF_NAME-$GITHUB_RUN_ID

@@ -10,7 +10,7 @@ services:
       pg:
         condition: service_healthy
       migrations:
-        condition: service_complited_successfully
+        condition: service_completed_successfully
 
   migrations:
     image: mixola/hosting:$GITHUB_REF_NAME-$GITHUB_RUN_ID

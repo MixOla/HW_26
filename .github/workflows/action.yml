@@ -35,7 +35,7 @@ jobs:
           username: ${{ secrets.USERNAME }}
           password: ${{ secrets.PASSWORD }}
           source: "deploy/docker-compose.yaml"
-          target: "flask_app"
+          target: "flask_app_ci"
           strip_components: 1
       - name: deploy app
         uses: appleboy/ssh-action@master

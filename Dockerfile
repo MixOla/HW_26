@@ -6,6 +6,6 @@ WORKDIR $HOME
 COPY requirements.txt .
 RUN python3 -m pip install --no-cache -r requirements.txt
 
-COPY flask_app/ .
+COPY . .
 
 ENTRYPOINT ["sh", "entrypoint.sh"]

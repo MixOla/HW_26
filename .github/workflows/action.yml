@@ -8,11 +8,11 @@ jobs:
       - name: clone code
         uses: actions/checkout@v2
       - name: docker build
-        run: docker build -t ${{ secrets.HOST }}:$GITHUB_REF_NAME-$GITHUB_RUN_ID .
+        run: docker build -t mixola/hosting:$GITHUB_REF_NAME-$GITHUB_RUN_ID .
       - name: docker login
-        run: docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_TOKEN }}
+        run: echo ${{ secrets.DOCKER_TOKEN }} | docker login -u ${{ secrets.DOCKER_USERNAME }} --password-stdin
       - name: docker push
-        run: docker push ${{ secrets.HOST }}:$GITHUB_REF_NAME-$GITHUB_RUN_ID
+        run: docker push mixola/hosting:$GITHUB_REF_NAME-$GITHUB_RUN_ID
 #  deploy:
 #    needs: build
 #    runs-on: ubuntu-latest

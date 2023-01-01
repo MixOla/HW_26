@@ -44,3 +44,6 @@ services:
         timeout: 3s
         retries: 3
 
+  volumes:
+    pg_data:
+

@@ -1,9 +1,7 @@
 version: '3.8'
 services:
   api:
-    build:
-      context: .
-    image: mixola/hosting
+    image: mixola/hosting:$GITHUB_REF_NAME-$GITHUB_RUN_ID
     ports:
       - "80:25000"
     env_file:
@@ -15,9 +13,7 @@ services:
         condition: service_complited_successfully
 
   migrations:
-    build:
-      context: .
-    image: mixola/hosting
+    image: mixola/hosting:$GITHUB_REF_NAME-$GITHUB_RUN_ID
     depends_on:
       db:
         condition: service_healthy

@@ -21,7 +21,7 @@ services:
       - .env
     command: flask db upgrade
 
-  db:
+  pg:
     image: postgres:14.6-alpine
     restart: on-failure
     environment:

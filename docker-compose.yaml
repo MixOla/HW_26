@@ -3,6 +3,7 @@ services:
   api:
     build:
       context: .
+      dockerfile: Dockerfile
     image: mixola/hosting
     ports:
       - "80:25000"
@@ -15,11 +16,10 @@ services:
         condition: service_completed_successfully
 
   migrations:
-    build:
-      context: .
+    build: .
     image: mixola/hosting
     depends_on:
-      db:
+      pg:
         condition: service_healthy
     env_file:
       - .env
@@ -37,7 +37,7 @@ services:
     ports:
         - '${POSTGRES_PORT:-5432}:5432'
     healthcheck:
-        test: ["CMD-SHELL", "pg_isready -U postgres"]
+        test: pg_isready -U ${POSTGRES_USER} -d ${POSTGRES_DB}
         interval: 3s
         timeout: 3s
         retries: 3
